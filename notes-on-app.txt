@@ -1,0 +1,5 @@
+So, what would I want to do for this project...?
+
+I want to create an app that allows a user to input their spotify username and creates a new playlist for them based on their tastes
+
+This is a good baseline for my project
