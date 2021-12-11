@@ -8,3 +8,5 @@ So what will we do today?
 
 - start node app to setup reactJS
 - learn how to post spotify user to get their user tastes
+
+So, we use Node as our backend and ReactJS as our FE
