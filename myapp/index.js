@@ -1,9 +1,14 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.port || 8080;
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
+});
+
+app.post("/post", (req, res) => {
+    console.log("Connected to React");
+    res.redirect("/");
 });
 
 app.listen(port, () => {
