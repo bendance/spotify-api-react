@@ -10,3 +10,4 @@ So what will we do today?
 - learn how to post spotify user to get their user tastes
 
 So, we use Node as our backend and ReactJS as our FE
+APIs are generally run on the backend
