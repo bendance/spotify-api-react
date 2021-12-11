@@ -1,12 +1,12 @@
 import logo from './logo.svg';
-import Username from './Username'
-import './App.css';
+import MyForm from './MyForm'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App">
       <p>Work in progress.</p>
-      <Username />
+      <MyForm />
     </div>
   );
 }

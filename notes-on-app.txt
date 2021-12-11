@@ -11,3 +11,5 @@ So what will we do today?
 
 So, we use Node as our backend and ReactJS as our FE
 APIs are generally run on the backend
+
+When a username is submitted, I want to see it console logged on the backend

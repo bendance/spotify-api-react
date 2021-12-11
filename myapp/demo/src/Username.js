@@ -8,27 +8,20 @@ class Username extends React.Component
         this.state = {username: ''};
 
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event)
     {
-        this.setState({username: event.target.value})
-    }
-
-    handleSubmit(event) 
-    {
-        alert('A username was submitted: ' + this.state.username);
-        event.preventDefault();
+        this.setState({username: event.target.username});
     }
 
     render()
     {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form action="../../post" method = "post" className="form">
                 <label>
                     Username:
-                    <input type = "text" value = {this.state.value} onChange={this.handleChange} />
+                    <input type = "text" value = {this.state.username} onChange={this.handleChange} />
                 </label>
                 <input type = "submit" value="Submit" />
             </form>
