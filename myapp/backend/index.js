@@ -1,6 +1,6 @@
-import fetch from "node-fetch";
 import express from 'express';
 import cors from 'cors';
+import spotifyHandler from './spotify-api.js';
 
 const port = process.env.port || 8080;
 
@@ -15,26 +15,15 @@ app.get('/', (req, res) => {
 });
 
 app.post("/store-data", (req, res) => {
-    let name = req.body.name;
-    let OAuthToken = "BQD9r5ysYwGTTrqKx6N67udH7x7Qt1Jsm4TAgQ8GsEaXj5LgcwuRjxaONyjveVGrCm-T5UzvSHPbPTt3CBrG2GMhkWvTu7Vw69nAZa52B0I-Jxg35dxQ9gPUc52fnJmpgaswhD1nnZJzQFvyBE3L9_CkrCtYOntlcVw2-2oO8ENU79WaXTs";
-
-    fetch(`https://api.spotify.com/v1/users/${name}/playlists`, {
-        method: 'POST',
-        body: {
-            "name": "New Playlist",
-            "description": "New playlist description",
-            "public": false
-        },
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${OAuthToken}`
-        }
-    }).then(function(response) {
-        console.log(response);
-        return response.json();
-    })
-
+    // Create the playlist with the user's userID
+    console.log(req.body.name);
     res.send("Creating new playlist for user.")
+});
+
+// Get the url to authenticate the user
+app.get("/authenticate-user", (req, res) => {
+    console.log("Authenticating user.");
+    res.send(spotifyHandler.requestAuthorization());
 });
 
 app.listen(port, () => {

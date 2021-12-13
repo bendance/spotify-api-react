@@ -9,6 +9,7 @@ class MyForm extends React.Component
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.authenticateUser = this.authenticateUser.bind(this);
     }
 
     handleChange = (event) => 
@@ -37,16 +38,28 @@ class MyForm extends React.Component
         event.preventDefault();
     }
 
+    authenticateUser = async () =>
+    {
+        const result = await fetch("http://localhost:8080/authenticate-user");
+        
+        const url = await result.text();
+    }
+
     render() 
     {
         return(
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Username: 
-                    <input type = "text" value = {this.state.name} onChange={this.handleChange} />
-                </label>
-                <input type="submit" value="Submit" />
-            </form>
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        Username: 
+                        <input type = "text" value = {this.state.name} onChange={this.handleChange} />
+                    </label>
+                    <input type="submit" value="Submit" />
+                    <br></br>
+                </form>
+
+                <button onClick={this.authenticateUser}>Authenticate</button>
+            </div>
         );
     }
 }
