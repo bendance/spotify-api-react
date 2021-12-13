@@ -1,1 +1,3 @@
-const apikeys = require("./spotify-api-keys");
+import keys from './spotify-api-keys.js';
+
+console.log(keys)
