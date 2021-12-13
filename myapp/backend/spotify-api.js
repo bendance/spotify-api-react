@@ -8,9 +8,9 @@ const APIController = (function() {
 
     const _requestAuthorization = () => {
         let url = "https://accounts.spotify.com/authorize";
-        url += "?=client_id=" + keys.clientID;
+        url += `?client_id=${keys.clientID}`;
         url += "&response_type=code";
-        url += "&redirect+uri=" + encodeURI("http://localhost:3000/");
+        url += "&redirect_uri=" + encodeURI("http://localhost:3000/");
         url += "&show_dialog=true";
         url += "&scope=user-read-private user-read-email user-modify-playback-state user-read-playback-position user-top-read playlist-modify-private playlist-read-collaborative playlist-read-private playlist-modify-public";
         return url;

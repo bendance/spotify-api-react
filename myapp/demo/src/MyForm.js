@@ -43,6 +43,9 @@ class MyForm extends React.Component
         const result = await fetch("http://localhost:8080/authenticate-user");
         
         const url = await result.text();
+
+        // create a new window for users to authenticate themselves
+        window.open(url);
     }
 
     render() 
