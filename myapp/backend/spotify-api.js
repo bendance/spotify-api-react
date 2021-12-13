@@ -37,11 +37,17 @@ const APIController = (function() {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`
+            },
+            body: {
+                "name": "New Playlist",
+                "description": "New playlist description",
+                "public": false
             }
         });
 
         const data = await result.json();
-        return data.external_urls.spotify;
+        console.log(data);
+        return data;
     }
 
     return {

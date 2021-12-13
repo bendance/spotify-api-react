@@ -14,10 +14,13 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-app.post("/store-data", (req, res) => {
+app.post("/create-playlist", async (req, res) => {
     // Create the playlist with the user's userID
-    console.log(req.body.name);
-    res.send("Creating new playlist for user.")
+    let token = await spotifyHandler.getToken();
+    console.log(token);
+
+    spotifyHandler.createPlaylist(token, req.body.userID);
+    res.send(`Creating new playlist for ${req.body.userID}.`)
 });
 
 // Get the url to authenticate the user
