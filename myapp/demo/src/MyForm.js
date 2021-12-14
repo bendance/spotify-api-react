@@ -34,11 +34,11 @@ class MyForm extends React.Component
 
     authenticateUser = async () =>
     {
-        const result = await fetch("http://localhost:8080/authenticate-user");
-        
-        const url = await result.text();
+        const result = await fetch("http://localhost:8080/login", {
+            mode: 'no-cors'
+        });
 
-        // send users to url so that they can authenticate themselves
+        const url = await result.text();
         window.location.href = url;
     }
 
