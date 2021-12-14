@@ -29,7 +29,7 @@ const scopes = [
 var spotifyApi = new SpotifyWebApi({
     clientId: SpotifyApiKeys.clientID,
     clientSecret: SpotifyApiKeys.clientSecret,
-    redirectUri: 'http://localhost:8080/callback'
+    redirectUri: 'http://localhost:3000/'
 })
 
 const port = process.env.port || 8080;
@@ -40,7 +40,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/login', (req, res) => {
-    res.redirect(spotifyApi.createAuthorizeURL(scopes));
+    res.send(spotifyApi.createAuthorizeURL(scopes));
 });
 
 app.get('/callback', (req, res) => {
