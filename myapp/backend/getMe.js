@@ -1,9 +1,0 @@
-import fs from 'fs';
-import SpotifyWebApi from 'spotify-web-api-node';
-const token = 'BQAO9_SKvyr4TBJyFy9ZAeivCLNdAHTA5WafidZ93_vEmVyQsbkkm5YDcxt9mv9frrkiCew68r1nkYOvxO7Nce4MqEBWQhodKYd7Xko3OFmshUSWZBzKJWGCK15yZkA5WafidZ93_vEmVyQsbkkm5YDcxt9mv9frrkiCew68r1n-N1hWtpGaAyu4jjfMXJ_awIdMbNq97p1OAecqU9GKE7HKyH14fCFZGMZSQJH3DZo-XFU8VTQc4Oj_NstGLcIK3sZzCsU9GIkYOvxO7Nce4MqEBWQhodKYd7Xko3OFmshUSWZBzKJWGCK15yZkk92KW6aADkSxEkbXieyedk20GNXN7eDGw_cWoQX-ExKWOfQPAZOo9bMJq6Dtxks-q16eZ5KD1lGaQQ4dMJYyFdXmlYGkX45B3qqH_l-Qdsg3dZ_Hhb6raT1I7E384KoptWvzMplX-qFXep-N1hWtpGaAyu4jjfMXJ_awIdMbNq97p1OAec9GqU9GKE7HKyH14fCFZGMZSQJH3DZo-XFU8VTQc4Oj_NsIKin 3600 s.tGLcIK3sZzCsU9GIiSYjEf4bieqLl6LC-f3RhozoRP';
-
-const spotifyApi = new SpotifyWebApi();
-spotifyApi.setAccessToken(token);
-
-// Get profile data
-const currentUser = await spotifyApi.getMe();

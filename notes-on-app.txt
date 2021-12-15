@@ -19,3 +19,7 @@ Authenticate -> Login -> Get Auth Code ->
 we now can get teh access code in our FE :)
 
 so now it is time to use this access code to execute some tasks with out api
+
+We can!
+
+Let's clean up our code and then think about what we want to do next
