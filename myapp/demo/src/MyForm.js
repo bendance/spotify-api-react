@@ -11,7 +11,6 @@ class MyForm extends React.Component
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.authenticateUser = this.authenticateUser.bind(this);
     }
 
     handleChange = (event) => 
@@ -34,36 +33,6 @@ class MyForm extends React.Component
         event.preventDefault();
     }
 
-    componentDidMount = async () => {
-        // parse the url code and send it to the backend to be sent API key
-        var url = new URL(window.location.href);
-        var codeText = url.searchParams.get('code');
-
-        if (codeText)
-        {
-            const data = await fetch("http://localhost:8080/callback", {
-                method: 'POST',
-                body: JSON.stringify({code: codeText}),
-                headers: {
-                    "Content-Type": "application/json"
-                },
-            });
-
-            const token = await data.text();
-            this.setState({accessToken: token});
-            console.log("Spotify API Token:", token);
-        }
-    }
-
-    authenticateUser = async () =>
-    {
-        const data = await fetch("http://localhost:8080/login");
-
-        const url = await data.text();
-        
-        window.location.href = url;
-    }
-
     render() 
     {
         return(
@@ -76,8 +45,6 @@ class MyForm extends React.Component
                     <input type="submit" value="Submit" />
                     <br></br>
                 </form>
-
-                <button onClick={this.authenticateUser}>Authenticate</button>
             </div>
         );
     }

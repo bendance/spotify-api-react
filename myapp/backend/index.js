@@ -65,7 +65,7 @@ app.post('/callback', (req, res) => {
             );
 
             // send the access token
-            res.send(access_token);
+            res.send(true);
 
             setInterval(async () => {
                 const data = await spotifyApi.refreshAccessToken();

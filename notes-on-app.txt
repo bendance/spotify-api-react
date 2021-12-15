@@ -23,3 +23,11 @@ so now it is time to use this access code to execute some tasks with out api
 We can!
 
 Let's clean up our code and then think about what we want to do next
+
+So here's what the form will be, a button to authenticate the user, then after the user is authenticated, they are taken to a form
+where they can enter playlist credentials along with their favorite genre of music, a playlist will then be created that displays the 
+top 50 songs of that genre. Good!
+
+So, let's go ahead and create a basic form
+
+We'll start with putting the authentication button on a seperate page
