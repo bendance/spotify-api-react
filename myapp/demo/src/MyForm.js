@@ -5,7 +5,9 @@ class MyForm extends React.Component
     constructor(props)
     {
         super(props);
-        this.state = { userID: ''};
+        this.state = { 
+            userID: '',
+            accessToken: ''};
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,6 +32,26 @@ class MyForm extends React.Component
         })
 
         event.preventDefault();
+    }
+
+    componentDidMount = async () => {
+        // parse the url code and send it to the backend to be sent API key
+        var url = new URL(window.location.href);
+        var codeText = url.searchParams.get('code');
+
+        if (codeText)
+        {
+            const data = await fetch("http://localhost:8080/callback", {
+                method: 'POST',
+                body: JSON.stringify({code: codeText}),
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            });
+
+            const token = await data.text();
+            console.log(token);
+        }
     }
 
     authenticateUser = async () =>

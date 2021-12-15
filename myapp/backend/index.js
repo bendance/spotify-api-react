@@ -43,16 +43,8 @@ app.get('/login', (req, res) => {
     res.send(spotifyApi.createAuthorizeURL(scopes));
 });
 
-app.get('/callback', (req, res) => {
-    const error = req.query.error;
-    const code = req.query.code;
-
-    if (error)
-    {
-        console.error('Callback Error:', error);
-        res.send(`Callback Error: ${error}`);
-        return;
-    }
+app.post('/callback', (req, res) => {
+    const code = req.body.code;
 
     spotifyApi
         .authorizationCodeGrant(code)
@@ -70,7 +62,9 @@ app.get('/callback', (req, res) => {
             console.log(
                 `Successfully retrieved access token. Expires in ${expires_in} s.`
             );
-            res.send('Success! You can now close the window.');
+
+            // send the access token
+            res.send(access_token);
 
             setInterval(async () => {
                 const data = await spotifyApi.refreshAccessToken();
