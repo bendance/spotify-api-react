@@ -39,6 +39,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// api responses
 app.get('/login', (req, res) => {
     res.send(spotifyApi.createAuthorizeURL(scopes));
 });
@@ -81,6 +82,11 @@ app.post('/callback', (req, res) => {
             res.send(`Error getting tokens: ${error}`);
         })
 });
+
+app.post('/create-playlist', (req, res) => {
+    spotifyApi.createPlaylist('API Works', {description: 'A new playlist', public: false})
+    res.send('Playlist has been created!')
+})
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}!`)

@@ -25,7 +25,7 @@ class MyForm extends React.Component
 
         fetch('http://localhost:8080/create-playlist', {
             method: 'POST',
-            body: JSON.stringify(this.state),
+            body: JSON.stringify({userID: this.state.userID}),
             headers: {
                 "Content-Type": "application/json"
             },
@@ -50,7 +50,8 @@ class MyForm extends React.Component
             });
 
             const token = await data.text();
-            console.log(token);
+            this.setState({accessToken: token});
+            console.log("Spotify API Token:", token);
         }
     }
 

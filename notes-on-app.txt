@@ -15,3 +15,7 @@ APIs are generally run on the backend
 When a username is submitted, I want to see it console logged on the backend
 
 Authenticate -> Login -> Get Auth Code ->
+
+we now can get teh access code in our FE :)
+
+so now it is time to use this access code to execute some tasks with out api
