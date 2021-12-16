@@ -21,21 +21,25 @@ class MyForm extends React.Component
     handleChangePlaylistName = (event) => 
     {
         this.setState({ playlistName: event.target.value });
+        console.log(this.state.playlistName);
     }
 
     handleChangePlaylistPublic = (event) =>
     {
         this.setState({ playlistPublic: event.target.value });
+        console.log(this.state.playlistPublic);
     }
 
     handleChangePlaylistDescription = (event) =>
     {
         this.setState({ playlistDescription: event.target.value });
+        console.log(this.state.playlistDescription);
     }
 
     handleChangeUserFavoriteGenre = (event) => 
     {
         this.setState({ userFavoriteGenre: event.target.value });
+        console.log(this.state.userFavoriteGenre);
     }
 
     handleSubmit = (event) =>
@@ -57,15 +61,11 @@ class MyForm extends React.Component
     {
         return(
             <form onSubmit={this.handleSubmit}>
-                <label for= {this.state.playlistName}>Playlist Name: </label>
+                <label for= {this.state.playlistName}>* Playlist Name: </label>
                 <br></br>
                 <input type = "text" value = {this.state.playlistName} onChange={this.handleChangePlaylistName} />
                 <br></br>
-                <label for = {this.state.playlistDescription}>Playlist Description: </label>
-                <br></br>
-                <input type = "text" value = {this.state.playlistDescription} onChange={this.handleChangePlaylistDescription} />
-                <br></br>
-                <label for = {this.state.userFavoriteGenre}>Favorite Genre: </label>
+                <label for = {this.state.userFavoriteGenre}>* Favorite Genre: </label>
                 <br></br>
                 <select name = {this.state.userFavoriteGenre} id = {this.state.userFavoriteGenre} onChange={this.handleChangeUserFavoriteGenre}>
                     <option value = "Pop">Pop</option>
@@ -75,12 +75,16 @@ class MyForm extends React.Component
                     <option value = "Latin">Latin</option>
                 </select>
                 <br></br>
-                Would you like to make your playlist public?
+                * Would you like to make your playlist public?
                 <br></br>
-                <input type = "radio" id = "yes" value = "yes" onChange={this.handleChangePlaylistPublic} />
+                <input type = "radio" id = "yes" value = "yes" name = "public" onChange={this.handleChangePlaylistPublic} />
                 <label for = "yes">Yes</label>
-                <input type = "radio" id = "no" value = "no" onChange={this.handleChangePlaylistPublic} />
+                <input type = "radio" id = "no" value = "no" name= "public" onChange={this.handleChangePlaylistPublic} checked="checked"/>
                 <label for = "no">No </label>
+                <br></br>
+                <label for = {this.state.playlistDescription}>Playlist Description: </label>
+                <br></br>
+                <input type = "text" value = {this.state.playlistDescription} onChange={this.handleChangePlaylistDescription} />
                 <br></br>
                 <button onChange={this.handleSubmit}>Create Playlist</button>
             </form>
