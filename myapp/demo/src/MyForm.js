@@ -75,9 +75,14 @@ class MyForm extends React.Component
                     <option value = "Latin">Latin</option>
                 </select>
                 <br></br>
-                Would you like to make your playlist public? 
-                <input type = "checkbox" id = "Playlist Public" onChange={this.handleChangePlaylistPublic} />
+                Would you like to make your playlist public?
                 <br></br>
+                <input type = "radio" id = "yes" value = "yes" onChange={this.handleChangePlaylistPublic} />
+                <label for = "yes">Yes</label>
+                <input type = "radio" id = "no" value = "no" onChange={this.handleChangePlaylistPublic} />
+                <label for = "no">No </label>
+                <br></br>
+                <button onChange={this.handleSubmit}>Create Playlist</button>
             </form>
         );
     }
