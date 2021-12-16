@@ -84,9 +84,16 @@ app.post('/callback', (req, res) => {
         })
 });
 
-app.post('/create-playlist', (req, res) => {
+app.post('/create-playlist', async (req, res) => {
     const webScrapper = new WebScrapper(req.body.userFavoriteGenre);
-    const topHundredSongs = webScrapper.getTopOneHundred();
+    const topHundredSongs = await webScrapper.getTopOneHundred();
+
+    // see what the search function returns
+    console.log(topHundredSongs[0][0])
+    let searchResults = await spotifyApi.searchTracks(`${topHundredSongs[0][0]} ${topHundredSongs[0][1]}`, {limit: 5});
+    
+    console.log(topHundredSongs);
+    console.log(searchResults);
     // spotifyApi.createPlaylist(req.body.playlistName, {description: req.body.playlistDescription, public: req.body.playlistPublic === 'true'})
     // res.send('Playlist has been created!')
 })

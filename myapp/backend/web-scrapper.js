@@ -8,13 +8,14 @@ export default class WebScrapper
         this.genre = genre
     }
 
-    getTopOneHundred = () =>
+    // returns a list of tuples of the top 100 songs for that genre in this format [[artist, song],...]
+    getTopOneHundred = async () =>
     {
         // will get different top 100 based on what the user requested
         switch (this.genre)
         {
             case "Pop":
-                return this.getPopSongs();
+                return await this.getPopSongs();
             case "Hip Hop":
                 return;
             case "Rock":
@@ -31,6 +32,16 @@ export default class WebScrapper
         const response = await fetch('http://www.popvortex.com/music/charts/top-pop-songs.php');
         const text = await response.text();
         const dom = await new JSDOM(text);
-        const topSongs = dom.window.document.querySelectorAll("cite").forEach((song) => console.log(song.textContent));
+        const topSongTitles = dom.window.document.querySelectorAll(".title");
+        const topSongArtists = dom.window.document.querySelectorAll(".artist");
+
+        let topSongTuples = []
+
+        for (let i = 0; i < topSongArtists.length; i++)
+        {
+            topSongTuples.push([topSongArtists[i].textContent, topSongTitles[i].textContent]);
+        }
+
+        return topSongTuples;
     }
 }
