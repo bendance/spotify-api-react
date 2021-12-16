@@ -31,3 +31,5 @@ top 50 songs of that genre. Good!
 So, let's go ahead and create a basic form
 
 We'll start with putting the authentication button on a seperate page
+
+It seems that clearing out the cookies on my browser makes me have to log in again for Spotify
