@@ -20,7 +20,7 @@ class App extends React.Component
     <div className="App">
       <p>Spotify API Interaction</p>
       {this.state.tokenActive ? (
-        <MyForm />
+        <MyForm tokenHandler = {this.tokenHandler} />
       ) : !this.state.tokenActive ? (
         <Authentication tokenHandler = {this.tokenHandler}/>
       ) : null}

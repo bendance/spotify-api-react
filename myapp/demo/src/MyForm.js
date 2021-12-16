@@ -9,7 +9,8 @@ class MyForm extends React.Component
             playlistName: '',
             playlistPublic: '',
             playlistDescription: '',
-            userFavoriteGenre: ''};
+            userFavoriteGenre: '',
+            failedSubmit: ''};
 
         this.handleChangePlaylistName = this.handleChangePlaylistName.bind(this);
         this.handleChangePlaylistPublic = this.handleChangePlaylistPublic.bind(this);
@@ -44,15 +45,21 @@ class MyForm extends React.Component
 
     handleSubmit = (event) =>
     {
-        alert('A form was submitted: ' + this.state.userID);
-
-        fetch('http://localhost:8080/create-playlist', {
-            method: 'POST',
-            body: JSON.stringify({userID: this.state.userID}),
-            headers: {
-                "Content-Type": "application/json"
-            },
-        })
+        // if the required fields aren't completed, add text saying to complete fields
+        if (this.state.playlistName === '')
+        {
+            this.setState({ failedSubmit: true });
+        }
+        else
+        {
+            fetch('http://localhost:8080/create-playlist', {
+                method: 'POST',
+                body: JSON.stringify({userID: this.state.userID}),
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            })
+        }
 
         event.preventDefault();
     }
@@ -87,6 +94,10 @@ class MyForm extends React.Component
                 <input type = "text" value = {this.state.playlistDescription} onChange={this.handleChangePlaylistDescription} />
                 <br></br>
                 <button onChange={this.handleSubmit}>Create Playlist</button>
+                <br></br>
+                {this.state.failedSubmit ? (
+                    <div>Please enter required information.</div>
+                ) : null}
             </form>
         );
     }
