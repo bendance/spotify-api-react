@@ -7,9 +7,9 @@ class MyForm extends React.Component
         super(props);
         this.state = { 
             playlistName: '',
-            playlistPublic: '',
+            playlistPublic: 'no',
             playlistDescription: '',
-            userFavoriteGenre: '',
+            userFavoriteGenre: 'Pop',
             failedSubmit: ''};
 
         this.handleChangePlaylistName = this.handleChangePlaylistName.bind(this);
@@ -53,10 +53,11 @@ class MyForm extends React.Component
         else
         {
             console.log("Creating playlist.")
+            console.log(this.state.playlistPublic);
 
             fetch('http://localhost:8080/create-playlist', {
                 method: 'POST',
-                body: JSON.stringify({userID: this.state.userID}),
+                body: JSON.stringify(this.state),
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -86,9 +87,9 @@ class MyForm extends React.Component
                 <br></br>
                 * Would you like to make your playlist public?
                 <br></br>
-                <input type = "radio" id = "yes" value = "yes" name = "public" onChange={this.handleChangePlaylistPublic} />
+                <input type = "radio" id = "yes" value = "yes" name = "public" onChange={this.handleChangePlaylistPublic} checked = {this.state.playlistPublic === "yes"}/>
                 <label forhtml = "yes">Yes</label>
-                <input type = "radio" id = "no" value = "no" name= "public" onChange={this.handleChangePlaylistPublic} checked="checked"/>
+                <input type = "radio" id = "no" value = "no" name= "public" onChange={this.handleChangePlaylistPublic} checked = {this.state.playlistPublic === "no"}/>
                 <label forhtml = "no">No </label>
                 <br></br>
                 Playlist Description:

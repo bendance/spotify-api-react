@@ -34,4 +34,8 @@ We'll start with putting the authentication button on a seperate page
 
 It seems that clearing out the cookies on my browser makes me have to log in again for Spotify
 
-Next steps, I want to make it so that the user has to enter the required fields before progressing and then I want to make a basic playlist
+Next steps, I want to make it so that the user has to enter the required fields before progressing and then I want to make a basic playlist X
+
+Next, let's go ahead and parse the user's data sent to the backend by the create-playlist call X
+
+Alright now for our next step, we want to use the user's favorite genre to get the current top 50 songs of that genre and add them to a playlist

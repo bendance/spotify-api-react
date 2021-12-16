@@ -84,7 +84,8 @@ app.post('/callback', (req, res) => {
 });
 
 app.post('/create-playlist', (req, res) => {
-    spotifyApi.createPlaylist('API Works', {description: 'A new playlist', public: false})
+    var genre = req.body.userFavoriteGenre;
+    spotifyApi.createPlaylist(req.body.playlistName, {description: req.body.playlistDescription, public: req.body.playlistPublic === 'true'})
     res.send('Playlist has been created!')
 })
 
