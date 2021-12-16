@@ -1,5 +1,6 @@
 import SpotifyWebApi from 'spotify-web-api-node';
 import SpotifyApiKeys from './spotify-api-keys.js';
+import WebScrapper from './web-scrapper.js';
 import express from 'express';
 import cors from 'cors';
 
@@ -84,9 +85,10 @@ app.post('/callback', (req, res) => {
 });
 
 app.post('/create-playlist', (req, res) => {
-    var genre = req.body.userFavoriteGenre;
-    spotifyApi.createPlaylist(req.body.playlistName, {description: req.body.playlistDescription, public: req.body.playlistPublic === 'true'})
-    res.send('Playlist has been created!')
+    const webScrapper = new WebScrapper(req.body.userFavoriteGenre);
+    const topHundredSongs = webScrapper.getTopOneHundred();
+    // spotifyApi.createPlaylist(req.body.playlistName, {description: req.body.playlistDescription, public: req.body.playlistPublic === 'true'})
+    // res.send('Playlist has been created!')
 })
 
 app.listen(port, () => {
