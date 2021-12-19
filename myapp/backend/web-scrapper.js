@@ -15,21 +15,31 @@ export default class WebScrapper
         switch (this.genre)
         {
             case "Pop":
-                return await this.getPopSongs();
+                return await this.getSongsInGenre('http://www.popvortex.com/music/charts/top-pop-songs.php');
             case "Hip Hop":
-                return;
+                return await this.getSongsInGenre('http://www.popvortex.com/music/charts/top-rap-songs.php');
             case "Rock":
-                return;
+                return await this.getSongsInGenre('http://www.popvortex.com/music/charts/top-rock-songs.php');
             case "Electronic":
-                return;
+                return await this.getSongsInGenre('http://www.popvortex.com/music/charts/top-electronic-songs.php');
             case "Latin":
-                return;
+                return await this.getSongsInGenre('http://www.popvortex.com/music/charts/top-latin-songs.php');
+            case "Indie Rock":
+                return await this.getSongsInGenre('http://www.popvortex.com/music/charts/top-indie-songs.php');
+            case "Reggaeton":
+                return await this.getSongsInGenre('http://www.popvortex.com/music/charts/top-reggaeton-songs.php');
+            case "K-Pop":
+                return await this.getSongsInGenre('http://www.popvortex.com/music/charts/top-kpop-songs.php');
+            case "R&B / Soul":
+                return await this.getSongsInGenre('http://www.popvortex.com/music/charts/top-soul-songs.php');
+            case "Country":
+                return await this.getSongsInGenre('http://www.popvortex.com/music/charts/top-country-songs.php');
         }
     }
 
-    getPopSongs = async () =>
+    getSongsInGenre = async (link) =>
     {
-        const response = await fetch('http://www.popvortex.com/music/charts/top-pop-songs.php');
+        const response = await fetch(link);
         const text = await response.text();
         const dom = await new JSDOM(text);
         const topSongTitles = dom.window.document.querySelectorAll(".title");
