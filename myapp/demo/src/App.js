@@ -13,12 +13,15 @@ function App(props)
 
   return(
       <div className="App">
-      <p>Spotify API Interaction</p>
-      {tokenActive === "true" ? (
-        <MyForm setTokenActive = {setTokenActive} />
-      ) : tokenActive === "false" ? (
-        <Authentication handleSetTokenActive = {handleSetTokenActive}/>
-      ) : null}
+        <div className='text-center'>
+            <h1>Spotify Playlist Generator</h1>
+            <br></br>
+            {tokenActive === "true" ? (
+              <MyForm setTokenActive = {setTokenActive} />
+            ) : tokenActive === "false" ? (
+              <Authentication handleSetTokenActive = {handleSetTokenActive}/>
+            ) : null}
+        </div>
     </div>
   )
 }
