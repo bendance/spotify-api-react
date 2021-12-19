@@ -97,11 +97,15 @@ app.post('/create-playlist', async (req, res) => {
 
     for (let i = 0; i < topHundredSongs.length; i++)
     {
-        console.log(`Adding song ${i + 1}...`)
+        console.log(`Adding track ${i + 1}...`)
         // get what the search function returns
         let searchResults = await spotifyApi.searchTracks(`${topHundredSongs[i][0]} ${topHundredSongs[i][1]}`, {limit: 5});
         // get the first thing that the search button returns and add it to the playlist you just created
-        trackUris.push(searchResults.body.tracks.items[0].uri);
+
+        if (typeof searchResults.body.tracks.items[0] !== "undefined")
+            trackUris.push(searchResults.body.tracks.items[0].uri);
+        else
+            console.log(`Was unable to add track ${i + 1}.`)
     }
 
     // Add tracks to Spotify playlist

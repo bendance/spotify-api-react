@@ -56,6 +56,11 @@ export default class WebScrapper
             if(songTitle.includes("(feat."))
                 songTitle = songTitle.replace(/\(feat..*$/, '');
 
+            if(songTitle.includes("Version"))
+            {
+                songTitle = songTitle.replace(/\(.*?Version\)/, '');
+            }
+
             if(songArtist.includes("&"))
                 songArtist = songArtist.replace(/\&.*$/,'');
 

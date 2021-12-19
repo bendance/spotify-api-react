@@ -39,3 +39,6 @@ Next steps, I want to make it so that the user has to enter the required fields 
 Next, let's go ahead and parse the user's data sent to the backend by the create-playlist call X
 
 Alright now for our next step, we want to use the user's favorite genre to get the current top 50 songs of that genre and add them to a playlist
+
+Tests:
+- make sure you can make playlists with each genre
