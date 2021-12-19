@@ -28,8 +28,8 @@ class Authentication extends React.Component
             
             // evaluate if a token was created
             const token = await data.text();
-            const truthValue = (token === 'true');
-            this.props.tokenHandler(truthValue);
+            if(token === 'true')
+                this.props.handleSetTokenActive();
             console.log("Was Spotify Token Created?:", token);
         }
     }

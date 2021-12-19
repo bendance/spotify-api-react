@@ -41,4 +41,5 @@ Next, let's go ahead and parse the user's data sent to the backend by the create
 Alright now for our next step, we want to use the user's favorite genre to get the current top 50 songs of that genre and add them to a playlist
 
 Tests:
-- make sure you can make playlists with each genre
+- make sure you can make playlists with each genre X
+
