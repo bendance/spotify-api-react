@@ -39,7 +39,17 @@ export default class WebScrapper
 
         for (let i = 0; i < topSongArtists.length; i++)
         {
-            topSongTuples.push([topSongArtists[i].textContent, topSongTitles[i].textContent]);
+            var songTitle = topSongTitles[i].textContent;
+            var songArtist = topSongArtists[i].textContent;
+
+            // if the song has feat. in the title, trim it
+            if(songTitle.includes("(feat."))
+            {
+                songTitle = songTitle.replace(/\(feat..*$/, '');
+                console.log(songTitle);
+            }
+
+            topSongTuples.push([songTitle, songArtist]);
         }
 
         return topSongTuples;

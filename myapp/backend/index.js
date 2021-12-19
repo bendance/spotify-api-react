@@ -88,12 +88,12 @@ app.post('/create-playlist', async (req, res) => {
     const webScrapper = new WebScrapper(req.body.userFavoriteGenre);
     const topHundredSongs = await webScrapper.getTopOneHundred();
 
-    // see what the search function returns
-    console.log(topHundredSongs[0][0])
+    // get what the search function returns
     let searchResults = await spotifyApi.searchTracks(`${topHundredSongs[0][0]} ${topHundredSongs[0][1]}`, {limit: 5});
-    
-    console.log(topHundredSongs);
-    console.log(searchResults);
+    // get the first thing that the search button returns and add it to the playlist you just created
+    console.log(searchResults.body.tracks.items[0].uri);
+
+    spotifyApi.addTracksToPlaylist
     // spotifyApi.createPlaylist(req.body.playlistName, {description: req.body.playlistDescription, public: req.body.playlistPublic === 'true'})
     // res.send('Playlist has been created!')
 })
