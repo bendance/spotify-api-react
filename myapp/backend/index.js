@@ -85,17 +85,30 @@ app.post('/callback', (req, res) => {
 });
 
 app.post('/create-playlist', async (req, res) => {
+    // create the playlist
+    const newPlaylist = await spotifyApi.createPlaylist(req.body.playlistName, {description: req.body.playlistDescription, public: req.body.playlistPublic === 'true'});
+    const newPlaylistID = newPlaylist.body.id;
+
+    // scrape for top 100 songs in user selected genre
     const webScrapper = new WebScrapper(req.body.userFavoriteGenre);
     const topHundredSongs = await webScrapper.getTopOneHundred();
 
-    // get what the search function returns
-    let searchResults = await spotifyApi.searchTracks(`${topHundredSongs[0][0]} ${topHundredSongs[0][1]}`, {limit: 5});
-    // get the first thing that the search button returns and add it to the playlist you just created
-    console.log(searchResults.body.tracks.items[0].uri);
+    let trackUris = [];
 
-    spotifyApi.addTracksToPlaylist
-    // spotifyApi.createPlaylist(req.body.playlistName, {description: req.body.playlistDescription, public: req.body.playlistPublic === 'true'})
-    // res.send('Playlist has been created!')
+    for (let i = 0; i < topHundredSongs.length; i++)
+    {
+        console.log(`Adding song ${i + 1}...`)
+        // get what the search function returns
+        let searchResults = await spotifyApi.searchTracks(`${topHundredSongs[i][0]} ${topHundredSongs[i][1]}`, {limit: 5});
+        // get the first thing that the search button returns and add it to the playlist you just created
+        trackUris.push(searchResults.body.tracks.items[0].uri);
+    }
+
+    // Add tracks to Spotify playlist
+    spotifyApi.addTracksToPlaylist(newPlaylistID, trackUris); 
+
+    // Send response
+    res.send('Playlist has been created!')
 })
 
 app.listen(port, () => {

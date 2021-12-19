@@ -44,10 +44,13 @@ export default class WebScrapper
 
             // if the song has feat. in the title, trim it
             if(songTitle.includes("(feat."))
-            {
                 songTitle = songTitle.replace(/\(feat..*$/, '');
-                console.log(songTitle);
-            }
+
+            if(songArtist.includes("&"))
+                songArtist = songArtist.replace(/\&.*$/,'');
+
+            if(songArtist.includes("X"))
+                songArtist = songArtist.replace(/\X.*$/,'');
 
             topSongTuples.push([songTitle, songArtist]);
         }
