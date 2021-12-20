@@ -112,12 +112,13 @@ class MyForm extends React.Component
                     <br></br>
                     <input style = {{height: 100}} id = "playlistDescription" className='form-control' type = "text" value = {this.state.playlistDescription} onChange={this.handleChangePlaylistDescription} />
                 </div>
-                
                 <br></br>
-                <button onChange={this.handleSubmit}>Create Playlist</button>
+                <div className='text-center'>
+                    <button onChange={this.handleSubmit} type='button' className='btn btn-primary'>Create Playlist</button>
+                </div>
                 <br></br>
                 {this.state.failedSubmit ? (
-                    <div>Please enter required information.</div>
+                    <div className='text-danger'>* Please enter required information.</div>
                 ) : null}
             </form>
         );
