@@ -36,7 +36,7 @@ class Authentication extends React.Component
 
     render() {
         return(
-            <div>
+            <div className="text-center">
                 <button type="button" className="btn btn-primary" onClick={this.authenticateUser}>Authenticate</button>
             </div>
     )}

@@ -71,9 +71,11 @@ class MyForm extends React.Component
     {
         return(
             <form onSubmit={this.handleSubmit}>
-                * Playlist Name:
-                <br></br>
-                <input type = "text" value = {this.state.playlistName} onChange={this.handleChangePlaylistName} />
+                <div className='form-group'>
+                    <label for = "playlistName">* Playlist Name:</label>
+                    <br></br>
+                    <input id = "playlistName" className='form-control' type = "text" value = {this.state.playlistName} onChange={this.handleChangePlaylistName} />
+                </div>
                 <br></br>
                 * Favorite Genre:
                 <br></br>
