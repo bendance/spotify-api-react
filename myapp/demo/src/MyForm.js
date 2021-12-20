@@ -77,7 +77,22 @@ class MyForm extends React.Component
                     <input id = "playlistName" className='form-control' type = "text" value = {this.state.playlistName} onChange={this.handleChangePlaylistName} />
                 </div>
                 <br></br>
-                * Favorite Genre:
+                <div className='form-group'>
+                    <label for = "favoriteGenre">* Favorite Genre:</label>
+                    <br></br>
+                    <select id = "favoriteGenre" className = "form-control" onChange={this.handleChangeUserFavoriteGenre}>
+                        <option value = "Pop">Pop</option>
+                        <option value = "Hip Hop">Rap & Hip Hop</option>
+                        <option value = "Rock">Rock</option>
+                        <option value = "Electronic">Electronic</option>
+                        <option value = "Latin">Latin</option>
+                        <option value = "Indie Rock">Indie Rock</option>
+                        <option value = "Reggaeton">Reggaeton</option>
+                        <option value = "K-Pop">K-Pop</option>
+                        <option value = "R&B / Soul">R&B / Soul</option>
+                        <option value = "Country">Country</option>
+                    </select>
+                </div>
                 <br></br>
                 <select name = {this.state.userFavoriteGenre} id = {this.state.userFavoriteGenre} onChange={this.handleChangeUserFavoriteGenre}>
                     <option value = "Pop">Pop</option>
