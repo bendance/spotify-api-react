@@ -41,9 +41,11 @@ Next, let's go ahead and parse the user's data sent to the backend by the create
 Alright now for our next step, we want to use the user's favorite genre to get the current top 50 songs of that genre and add them to a playlist
 
 Tasks:
-- make it so doesn't go back to auth screen when creating playlists
-- add screen that says your playlist has been created (comes with link to go to your playlist and a link to create another playlist)
+- make it so doesn't go back to auth screen when creating playlists X
+- add screen that says your playlist has been created X 
+- (comes with link to go to your playlist and a link to create another playlist)
 
 Known bugs:
 - you can expand textbox so that title is no longer visible
+- you can repeatedly click create playlist for some reason
 
