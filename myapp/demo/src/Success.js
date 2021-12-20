@@ -16,9 +16,14 @@ const Success = (props) =>
     return(
         <div className="text-center">
             <h2 className="text-center">Your playlist has been successfully created!</h2>
-            <div className = "d-flex">
-                <button type = "button" className = "btn btn-primary" onClick={openPlaylist}>Go To Playlist</button>
-                <button type = "button" className = "btn btn-primary" onClick={reloadPage}>Create Another</button>
+            <br></br>
+            <div className="row" style={{width: "320px", margin: "auto"}}>
+                <div className="col">
+                        <button type = "button" className = "btn btn-primary" onClick={openPlaylist} style = {{margin: "auto"}}>Go To Playlist</button>
+                </div>
+                <div className="col">
+                    <button type = "button" className = "btn btn-primary" onClick={reloadPage}>Create Another</button>
+                </div>
             </div>
         </div>
     );
