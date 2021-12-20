@@ -44,6 +44,7 @@ Tasks:
 - make it so doesn't go back to auth screen when creating playlists X
 - add screen that says your playlist has been created X 
 - (comes with link to go to your playlist and a link to create another playlist)
+- Make it impossible to add text to input when button is clicked
 
 Known bugs:
 - you can expand textbox so that title is no longer visible

@@ -85,10 +85,6 @@ app.post('/callback', (req, res) => {
 });
 
 app.post('/create-playlist', async (req, res) => {
-    // create the playlist
-    const newPlaylist = await spotifyApi.createPlaylist(req.body.playlistName, {description: req.body.playlistDescription, public: req.body.playlistPublic === 'true'});
-    const newPlaylistID = newPlaylist.body.id;
-
     // scrape for top 100 songs in user selected genre
     const webScrapper = new WebScrapper(req.body.userFavoriteGenre);
     const topHundredSongs = await webScrapper.getTopOneHundred();
@@ -108,11 +104,15 @@ app.post('/create-playlist', async (req, res) => {
             console.log(`Was unable to add track ${i + 1}.`)
     }
 
+    // create the playlist
+    const newPlaylist = await spotifyApi.createPlaylist(req.body.playlistName, {description: req.body.playlistDescription, public: req.body.playlistPublic === 'true'});
+    const newPlaylistID = newPlaylist.body.id;
+
     // Add tracks to Spotify playlist
     spotifyApi.addTracksToPlaylist(newPlaylistID, trackUris); 
 
     // Send response
-    res.send('Playlist has been created!')
+    res.send(newPlaylist.body.external_urls.spotify);
 })
 
 app.listen(port, () => {

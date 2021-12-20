@@ -9,6 +9,7 @@ function App(props)
 {
   const [tokenActive, setTokenActive] = useState("false");
   const [creatingPlaylist, setCreatingPlaylist] = useState(true);
+  const [playlistUrl, setPlaylistUrl] = useState('');
 
   const handleSetTokenActive = () => {
     setTokenActive("true");
@@ -16,6 +17,10 @@ function App(props)
 
   const handleSetCreatingPlaylist = (truthValue) => {
     setCreatingPlaylist(truthValue);
+  }
+
+  const handleSetPlaylistUrl = (url) => {
+    setPlaylistUrl(url);
   }
 
   return(
@@ -26,11 +31,12 @@ function App(props)
               <br></br>
             ] : null}
             {(tokenActive === "true" && creatingPlaylist === true)? (
-              <MyForm handleSetCreatingPlaylist = {handleSetCreatingPlaylist}/>
+              <MyForm handleSetCreatingPlaylist = {handleSetCreatingPlaylist} handleSetPlaylistUrl = {handleSetPlaylistUrl}/>
             ) : (tokenActive === "false" && creatingPlaylist === true) ? (
               <Authentication handleSetTokenActive = {handleSetTokenActive}/>
             ) : (creatingPlaylist === false) ? (
-              <Success />
+              console.log(playlistUrl),
+              <Success url = {playlistUrl}/>
             ) : null}
         </div>
     </div>

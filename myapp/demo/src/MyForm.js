@@ -72,6 +72,11 @@ class MyForm extends React.Component
             if (typeof response !== "undefined")
                 console.log("Sending success screen.")
                 this.props.handleSetCreatingPlaylist(false);
+
+                const playlist = await response.text();
+                console.log(typeof playlist);
+
+                this.props.handleSetPlaylistUrl(playlist);
         }
     }
 
