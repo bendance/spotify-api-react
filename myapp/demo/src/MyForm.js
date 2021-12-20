@@ -94,29 +94,25 @@ class MyForm extends React.Component
                     </select>
                 </div>
                 <br></br>
-                <select name = {this.state.userFavoriteGenre} id = {this.state.userFavoriteGenre} onChange={this.handleChangeUserFavoriteGenre}>
-                    <option value = "Pop">Pop</option>
-                    <option value = "Hip Hop">Rap & Hip Hop</option>
-                    <option value = "Rock">Rock</option>
-                    <option value = "Electronic">Electronic</option>
-                    <option value = "Latin">Latin</option>
-                    <option value = "Indie Rock">Indie Rock</option>
-                    <option value = "Reggaeton">Reggaeton</option>
-                    <option value = "K-Pop">K-Pop</option>
-                    <option value = "R&B / Soul">R&B / Soul</option>
-                    <option value = "Country">Country</option>
-                </select>
+                <div className='form-group'>
+                    * Would you like to make your playlist public?
+                    <br></br>
+                    <div className='form-check'>
+                        <input className='form-check-input' type = "radio" id = "yes" value = "yes" name = "public" onChange={this.handleChangePlaylistPublic} checked = {this.state.playlistPublic === "yes"}/>
+                        <label className='form-check-label' forhtml = "yes">Yes</label>
+                    </div>
+                    <div className='form-check'>
+                        <input className='form-check-input' type = "radio" id = "no" value = "no" name= "public" onChange={this.handleChangePlaylistPublic} checked = {this.state.playlistPublic === "no"}/>
+                        <label className='form-check-label' forhtml = "no">No </label>
+                    </div>
+                </div>
                 <br></br>
-                * Would you like to make your playlist public?
-                <br></br>
-                <input type = "radio" id = "yes" value = "yes" name = "public" onChange={this.handleChangePlaylistPublic} checked = {this.state.playlistPublic === "yes"}/>
-                <label forhtml = "yes">Yes</label>
-                <input type = "radio" id = "no" value = "no" name= "public" onChange={this.handleChangePlaylistPublic} checked = {this.state.playlistPublic === "no"}/>
-                <label forhtml = "no">No </label>
-                <br></br>
-                Playlist Description:
-                <br></br>
-                <input type = "text" value = {this.state.playlistDescription} onChange={this.handleChangePlaylistDescription} />
+                <div className='form-group'>
+                    <label for = "playlistDescription">Playlist Description:</label>
+                    <br></br>
+                    <input style = {{height: 100}} id = "playlistDescription" className='form-control' type = "text" value = {this.state.playlistDescription} onChange={this.handleChangePlaylistDescription} />
+                </div>
+                
                 <br></br>
                 <button onChange={this.handleSubmit}>Create Playlist</button>
                 <br></br>
