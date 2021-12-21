@@ -36,7 +36,7 @@ function App(props)
               <Authentication handleSetTokenActive = {handleSetTokenActive}/>
             ) : (creatingPlaylist === false) ? (
               console.log(playlistUrl),
-              <Success url = {playlistUrl}/>
+              <Success url = {playlistUrl} handleSetCreatingPlaylist = {handleSetCreatingPlaylist}/>
             ) : null}
         </div>
     </div>

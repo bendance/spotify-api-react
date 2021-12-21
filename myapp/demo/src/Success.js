@@ -9,8 +9,8 @@ const Success = (props) =>
         );
     };
 
-    const reloadPage = () => {
-        window.location.href = "http://localhost:3000/";
+    const goBackToForm = () => {
+        props.handleSetCreatingPlaylist(true);
     }
 
     return(
@@ -22,7 +22,7 @@ const Success = (props) =>
                         <button type = "button" className = "btn btn-primary" onClick={openPlaylist} style = {{margin: "auto"}}>Go To Playlist</button>
                 </div>
                 <div className="col">
-                    <button type = "button" className = "btn btn-primary" onClick={reloadPage}>Create Another</button>
+                    <button type = "button" className = "btn btn-primary" onClick={goBackToForm}>Create Another</button>
                 </div>
             </div>
         </div>
