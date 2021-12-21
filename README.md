@@ -3,11 +3,12 @@ The Spotify Playlist generator takes the iTunes top 100 tracks of any genre of y
 
 ### Installation Instructions
 
+**Note**: If you don't have NodeJS installed on your computer, here is the link to install https://nodejs.org/en/download/
+
 1.) Download the .zip of this project by clicking the "code" button and clicking "Download ZIP"
 
 2.) Unzip the file and place the folder anywhere you like
 
-**Note**: If you don't have NodeJS installed on your computer, here is the link to install https://nodejs.org/en/download/
 3.) Open your terminal and navigate to the /myapp folder, type in your terminal "npm run dev" 
 
 4.) Open a different terminal and navigate to the /myapp/demo folder and type in "npm start"
